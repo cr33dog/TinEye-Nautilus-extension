@@ -1,0 +1,45 @@
+This is a simple script to add right-click search on TinEye to Nautilus.
+
+TinEye is a cool reverse image search tool - see http://tineye.com.
+
+This script requires the poster package by Chris AtLee, and the script 
+borrows from the documentation examples.  Poster allows submission of 
+mutlipart encoded form data.
+See: http://atlee.ca/software/poster/index.html
+
+The Nautilus hooks were largely copied from the 'nautilus-open-terminal' 
+script written by Martin Enlund.
+See: /examples/open-terminal.py inside the nautilus-python package shipped
+by your distro.
+
+Since the 'open-terminal' code is released under GPL v2 and to my 
+understanding the poster documentation is released into the public
+domain, I've opted to release this script as GPL v2.
+
+INSTALLING
+
+1. Install the poster module
+	- get the poster egg from http://atlee.ca/software/poster/dist/0.7.0/
+	- run 'sudo easy_install poster-0.7.0-py2.6.egg'
+	  (you may need to install the 'easy_install' package first)
+	- To test: open a python shell and type 'import poster'.  If there is
+	  no error, you should be all set.
+
+2. Copy search_tineye.py to ~/.nautilus/python-extensions/ and make it 
+   executable if necessary (chmod +x search_tineye.py).  Create the 
+   'python-extensions' directory if it does not exist.
+
+3. Log out of Gnome, log back in.
+
+If you don't see it in the right-click menu, be sure you have
+'python-nautilus' installed, and that the search_tineye.py file is 
+executable.
+
+USING
+
+Right-click an image and select 'Search TinEye'.  The result will launch
+in your default Gnome web browser.
+
+TODO
+
+ - Restrict to only image files
