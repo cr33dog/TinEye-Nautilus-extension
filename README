@@ -1,10 +1,12 @@
 This is a simple script to add right-click search on TinEye to Nautilus.
 
+PLEASE NOTE: only compatible with GNOME 2.x., not ported to GNOME 3 as yet.
+
 TinEye is a cool reverse image search tool - see http://tineye.com.
 
 This script requires the poster package by Chris AtLee, and the script 
 borrows from the documentation examples.  Poster allows submission of 
-mutlipart encoded form data.
+multipart encoded form data.
 See: http://atlee.ca/software/poster/index.html
 
 The Nautilus hooks were largely copied from the 'nautilus-open-terminal' 
@@ -42,4 +44,4 @@ in your default Gnome web browser.
 
 TODO
 
- - Restrict to only image files
+ - Port to Gnome 3
