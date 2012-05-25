@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # Based on Open Terminal example by Martin Enlund
+
 import os,sys
 from poster.encode import multipart_encode
 from poster.streaminghttp import register_openers
@@ -9,7 +10,6 @@ from gi.repository import Nautilus, GObject, GConf, Gtk
 
 BROWSER_KEY = '/desktop/gnome/applications/browser/exec'
 URL = 'http://www.tineye.com/search'
-#URL = 'http://127.0.0.1:5000'
 
 def error_dialog(message, dialog_title = "Error..."):
 	"""The extension's error dialog"""
@@ -33,14 +33,13 @@ def post_tineye(file):
 
     # Create the Request object
     request = urllib2.Request(URL, datagen, headers)
+
     # Actually do the request, and get the response
     try:
         f = urllib2.urlopen(request)
     except:
         error_dialog("Could not post image to tineye.com")
         sys.exit()
-    #print f.read()
-    #error_dialog(f.read())
     return(f.url)
 
 class SearchTinEyeExtension(GObject.GObject, Nautilus.MenuProvider):
@@ -54,29 +53,19 @@ class SearchTinEyeExtension(GObject.GObject, Nautilus.MenuProvider):
 
         url = post_tineye(filename) 
         os.system('%s "%s"' % (browser, url))
+
     def menu_activate_cb(self, menu, file):
         self._search_tineye(file)
         
-    #def menu_background_activate_cb(self, menu, file): 
-    #    self._search_tineye(file)
-       
     def get_file_items(self, window, files):
         if len(files) != 1:
             return
         
         file = files[0]
-        #if file.is_directory() or file.get_uri_scheme() != 'file':
-        #    return
         
         item = Nautilus.MenuItem(name='NautilusPython::Search_Tineye',
                                  label='Search TinEye...' ,
                                  tip='Search TinEye for  %s' % file.get_name())
         item.connect('activate', self.menu_activate_cb, file)
-        return [item]
 
-#    def get_background_items(self, window, file):
-#        item = nautilus.MenuItem('NautilusPython::openterminal_item',
-#                                 'Open Terminal Here',
-#                                 'Open Terminal In This Directory')
-#        item.connect('activate', self.menu_background_activate_cb, file)
-#        return item,
+        return [item]
