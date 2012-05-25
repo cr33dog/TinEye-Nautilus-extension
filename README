@@ -39,9 +39,9 @@ executable.
 
 USING
 
-Right-click an image and select 'Search TinEye'.  The result will launch
+Right-click an image and select 'Search TinEye...'.  The result will launch
 in your default Gnome web browser.
 
 TODO
 
- - Port to Gnome 3
+ - Add fallback to Gnome 2?
